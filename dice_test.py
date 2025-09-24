@@ -3,7 +3,6 @@
 
 import time
 import os
-import keyboard
 # To use any `random` functions, we must first `import random`:
 import random
 
@@ -30,11 +29,9 @@ curnet_num = int(1)
 dice_num_frames = [
     dice_num_1_path,
     dice_num_2_path,
-    dice_num_1_path,
-    dice_num_2_path,
     dice_num_3_path,
     dice_num_4_path,
-    dice_num_5_path, 
+    dice_num_5_path,
     dice_num_6_path,
 ]
 
@@ -44,45 +41,46 @@ toss_anim_frames = [
     toss_frame_3_path,
     toss_frame_4_path,
     toss_frame_5_path,
-    toss_frame_6_path,
+    toss_frame_6_path
 ]
 
-start_up = True
+
+start_up = bool(True)
 
 def roll_num():
-        dice_roll = random.randint(1, 6)
+        dice_roll = random.randint(0, 5)
         print(f"Dice roll: {dice_roll}")
         return dice_roll
-def roll(roll_num, Speed, curnet_num):
+def roll(roll_num, Speed,):
         for frame in toss_anim_frames:
             os.system("cls" if os.name == "nt" else "clear")  # clear screen
             with open(frame, "r", encoding="utf-8") as f:
                 print(f.read())
             time.sleep(Speed)  # delay between frames
 
-        if frame == toss_anim_frames[6].get:
+        if frame == toss_anim_frames[5]:
             os.system("cls" if os.name == "nt" else "clear")  # clear screen
             with open(dice_num_frames[roll_num], "r", encoding="utf-8") as f:
                 print(f.read())
+            time.sleep(2)  # delay between frames
+            roll_number = str(roll_num + 1)
+            print("you rolled a ", roll_number)
+            print(input("Press Enter to roll again..."))
+            return
 
-def start():
-    os.system("cls" if os.name == "nt" else "clear")  # clear screen
-    with open(start_text_ASCII, "r", encoding="utf-8") as f:
-        print(f.read())
-        time.sleep(2)  # delay between frames
-    start_up = False
-if start_up == True:
-    start()
 while True:
-    if keyboard.is_pressed("a"):
-        for x in range(12):  
-            os.system("cls" if os.name == "nt" else "clear")  # clear screen
-            for ds in range(x):  
-                print("")
-            with open(start_text_ASCII, "r", encoding="utf-8") as f:
-                print(f.read())
-            time.sleep(0.1)  # delay between frames
-        os.system("cls" if os.name == "nt" else "clear")  # clear screen 
-        time.sleep(1)  # delay between frames
-        roll(roll_num(), 0.3, curnet_num)
+    if start_up == False:
+        roll(roll_num(), 0.3)
+    elif start_up == True:
+        start_up = False
+        os.system("cls" if os.name == "nt" else "clear")  # clear screen
+        with open(start_text_ASCII, "r", encoding="utf-8") as f:
+            print(f.read())
+            print(input())
+            time.sleep(1)  # delay between frames
+        roll(roll_num(), 0.3)
+        start_up = False
         
+
+
+
