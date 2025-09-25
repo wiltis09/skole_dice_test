@@ -113,15 +113,16 @@ def roll(roll_num, Speed,):
             with open(frame, "r", encoding="utf-8") as f:
                 print(f.read())
             time.sleep(Speed)  # delay between frames
-        if frame == git_toss_anim_frames[5]:
-            clear_screen()
-            with open(git_dice_num_frames[roll_num], "r", encoding="utf-8") as f:
-                print(f.read())
-            time.sleep(2)  # delay between frames
-            roll_number = str(roll_num + 1)
-            print("you rolled a ", roll_number)
-            print(input("Press Enter to roll again..."))
-            return
+            if frame == git_toss_anim_frames[5]:
+                clear_screen()
+                with open(git_dice_num_frames[roll_num], "r", encoding="utf-8") as f:
+                    print(f.read())
+                time.sleep(0.3)  # delay between frames
+                time.sleep(2)  # delay between frames
+                roll_number = str(roll_num + 1)
+                print("you rolled a ", roll_number)
+                print(input("Press Enter to roll again..."))
+                return
     except:
         print("An error occurred. Please try again.")
         return
@@ -131,8 +132,8 @@ while True:
         if start_up == False:
             roll(roll_num(), 0.3)
         elif start_up == True:
-            start_up = False
-            os.system("cls" if os.name == "nt" else "clear")  # clear screen
+            start_up = bool(False)
+            clear_screen()
             #try:
                 #with open(start_text_ASCII, "r", encoding="utf-8") as f:
                     #print(f.read())
@@ -142,7 +143,7 @@ while True:
                 print(f.read())
                 print(input())
                 time.sleep(1)  # delay between frames
-            os.system("cls" if os.name == "nt" else "clear")  # clear screen
+            clear_screen()
             roll(roll_num(), 0.3)
             start_up = bool(False)
         
