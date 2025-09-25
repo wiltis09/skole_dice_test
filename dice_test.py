@@ -40,6 +40,7 @@ git_toss_frame_1_path = r"/Users/wilton/Documents/GitHub/skole_dice_test/toss_fr
 
 git_start_text_ASCII = r"/Users/wilton/Documents/GitHub/skole_dice_test/start_text_ASCII.txt"
 git_reroll_text_ASCII = r"/Users/wilton/Documents/GitHub/skole_dice_test/reroll_text_ASCII.txt"
+
 curnet_num = int(1)
 
 
@@ -89,7 +90,7 @@ def roll_num():
         return dice_roll
 def roll(roll_num, Speed,):
     time.sleep(2)
-    os.system("cls" if os.name == "nt" else "clear")  # clear screen
+    clear_screen()
     #try:
         #for frame in toss_anim_frames:
             #os.system("cls" if os.name == "nt" else "clear")  # clear screen
@@ -130,7 +131,7 @@ def roll(roll_num, Speed,):
 while True:
     try:
         if start_up == False:
-            roll(roll_num(), 0.3)
+            roll(roll_num(), 0.000001)
         elif start_up == True:
             start_up = bool(False)
             clear_screen()
@@ -144,7 +145,7 @@ while True:
                 print(input())
                 time.sleep(1)  # delay between frames
             clear_screen()
-            roll(roll_num(), 0.3)
+            roll(roll_num(), 0.000001)
             start_up = bool(False)
         
     except:
