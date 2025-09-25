@@ -81,62 +81,71 @@ toss_anim_frames = [
 
 start_up = bool(True)
 
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")  # clear screen
 def roll_num():
         dice_roll = random.randint(0, 5)
         print(f"Dice roll: {dice_roll}")
         return dice_roll
 def roll(roll_num, Speed,):
+    time.sleep(2)
     os.system("cls" if os.name == "nt" else "clear")  # clear screen
+    #try:
+        #for frame in toss_anim_frames:
+            #os.system("cls" if os.name == "nt" else "clear")  # clear screen
+            #with open(frame, "r", encoding="utf-8") as f:
+                #os.system("cls" if os.name == "nt" else "clear")  # clear screen
+                #print(f.read())
+            #time.sleep(Speed)  # delay between frames
+            
+        #if frame == toss_anim_frames[5]:
+            #os.system("cls" if os.name == "nt" else "clear")  # clear screen
+            #with open(dice_num_frames[roll_num], "r", encoding="utf-8") as f:
+                #print(f.read())         
+           # time.sleep(2)  # delay between frames
+           # roll_number = str(roll_num + 1)
+            #print("you rolled a ", roll_number)
+           # print(input("Press Enter to roll again..."))
+           # return
     try:
-        for frame in toss_anim_frames:
-            os.system("cls" if os.name == "nt" else "clear")  # clear screen
+        for frame in git_toss_anim_frames:
+            clear_screen()
             with open(frame, "r", encoding="utf-8") as f:
-                os.system("cls" if os.name == "nt" else "clear")  # clear screen
                 print(f.read())
             time.sleep(Speed)  # delay between frames
-            
-        if frame == toss_anim_frames[5]:
-            os.system("cls" if os.name == "nt" else "clear")  # clear screen
-            with open(dice_num_frames[roll_num], "r", encoding="utf-8") as f:
-                print(f.read())         
+        if frame == git_toss_anim_frames[5]:
+            clear_screen()
+            with open(git_dice_num_frames[roll_num], "r", encoding="utf-8") as f:
+                print(f.read())
             time.sleep(2)  # delay between frames
             roll_number = str(roll_num + 1)
             print("you rolled a ", roll_number)
             print(input("Press Enter to roll again..."))
             return
     except:
-            for frame in git_toss_anim_frames:
-                os.system("cls" if os.name == "nt" else "clear")  # clear screen
-                with open(frame, "r", encoding="utf-8") as f:
-                    print(f.read())
-                time.sleep(Speed)  # delay between frames
-            if frame == git_toss_anim_frames[5]:
-                os.system("cls" if os.name == "nt" else "clear")  # clear screen
-                with open(git_dice_num_frames[roll_num], "r", encoding="utf-8") as f:
-                    os.system("cls" if os.name == "nt" else "clear")  # clear screen
-                    print(f.read())
-                time.sleep(2)  # delay between frames
-                roll_number = str(roll_num + 1)
-                print("you rolled a ", roll_number)
-                print(input("Press Enter to roll again..."))
-                return
+        print("An error occurred. Please try again.")
+        return
 
 while True:
-    if start_up == False:
-        roll(roll_num(), 0.3)
-    elif start_up == True:
-        start_up = False
-        os.system("cls" if os.name == "nt" else "clear")  # clear screen
-        try:
-            with open(start_text_ASCII, "r", encoding="utf-8") as f:
-                print(f.read())
-                print(input())
-                time.sleep(1)  # delay between frames
-        except:
+    try:
+        if start_up == False:
+            roll(roll_num(), 0.3)
+        elif start_up == True:
+            start_up = False
+            os.system("cls" if os.name == "nt" else "clear")  # clear screen
+            #try:
+                #with open(start_text_ASCII, "r", encoding="utf-8") as f:
+                    #print(f.read())
+                    #print(input())
+                    #time.sleep(1)  # delay between frames
             with open(git_start_text_ASCII, "r", encoding="utf-8") as f:
                 print(f.read())
                 print(input())
                 time.sleep(1)  # delay between frames
-        os.system("cls" if os.name == "nt" else "clear")  # clear screen
-        roll(roll_num(), 0.3)
-        start_up = bool(False)
+            os.system("cls" if os.name == "nt" else "clear")  # clear screen
+            roll(roll_num(), 0.3)
+            start_up = bool(False)
+        
+    except:
+        print("An error occurred. Please try again.")
+        #test 4 
